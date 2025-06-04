@@ -186,6 +186,21 @@ void base_t::set_covariance(uint32_t index_a, uint32_t index_b, double_t value)
     base_t::P(index_a, index_b) = value;
 }
 
+void base_t::initialize_state(const Eigen::VectorXd& x0, const Eigen::MatrixXd& P0)
+{
+    if (x0.size() != static_cast<int>(n_x))
+    {
+        throw std::runtime_error("Initial state vector dimension does not match n_variables.");
+    }
+    if (P0.rows() != static_cast<int>(n_x) || P0.cols() != static_cast<int>(n_x))
+    {
+        throw std::runtime_error("Initial covariance matrix dimension does not match n_variables.");
+    }
+
+    x = x0;
+    P = P0;
+}
+
 // LOGGING
 bool base_t::start_log(const std::string& log_file, uint8_t precision)
 {

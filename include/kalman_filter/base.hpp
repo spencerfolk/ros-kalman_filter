@@ -60,6 +60,7 @@ public:
     /// \param index_b The index of the second estimated state.
     /// \param value The value to assign to the covariance.
     void set_covariance(uint32_t index_a, uint32_t index_b, double_t value);
+    void initialize_state(const Eigen::VectorXd& x0, const Eigen::MatrixXd& P0);
 
     // COVARIANCES
     /// \brief The process noise covariance matrix.
