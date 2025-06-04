@@ -165,6 +165,10 @@ void base_t::set_state(uint32_t index, double_t value)
 
     base_t::x(index) = value;
 }
+Eigen::VectorXd base_t::get_state()
+{
+    return base_t::x;
+}
 double_t base_t::covariance(uint32_t index_a, uint32_t index_b) const
 {
     // Check if indices is valid.
@@ -185,7 +189,10 @@ void base_t::set_covariance(uint32_t index_a, uint32_t index_b, double_t value)
 
     base_t::P(index_a, index_b) = value;
 }
-
+Eigen::MatrixXd base_t::get_covariance()
+{
+    return base_t::P;
+}
 void base_t::initialize_state(const Eigen::VectorXd& x0, const Eigen::MatrixXd& P0)
 {
     if (x0.size() != static_cast<int>(n_x))

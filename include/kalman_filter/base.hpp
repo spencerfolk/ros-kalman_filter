@@ -62,6 +62,9 @@ public:
     void set_covariance(uint32_t index_a, uint32_t index_b, double_t value);
     void initialize_state(const Eigen::VectorXd& x0, const Eigen::MatrixXd& P0);
 
+    Eigen::VectorXd get_state();
+    Eigen::MatrixXd get_covariance();
+
     // COVARIANCES
     /// \brief The process noise covariance matrix.
     Eigen::MatrixXd Q;
